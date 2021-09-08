@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        tools:ignore="MissingConstraints">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="@string/SelectWork"
+            app:titleTextColor="#ffff"
+            android:layout_gravity="center"
+            android:layoutDirection="rtl"
+            android:gravity="center"
+            android:background="@drawable/background_title" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Code"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/barcode" />
+
+                    <TextView
+                        android:id="@+id/txtCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="0"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/InsertUser"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/barcode" />
+
+                    <TextView
+                        android:id="@+id/txtInsertUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="0"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Subject"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/subject" />
+
+                    <TextView
+                        android:id="@+id/txtSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Subject"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/WorkType"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/tools" />
+
+                    <TextView
+                        android:id="@+id/txtWorkType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/WorkType"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Location"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/addres" />
+
+                    <TextView
+                        android:id="@+id/txtLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Location"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Rade"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/rade" />
+
+                    <TextView
+                        android:id="@+id/txtRade"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Rade"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Description"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/description" />
+
+                    <TextView
+                        android:id="@+id/txtDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="top|right"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:text="@string/Description"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/RequestType"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/tools1" />
+
+                    <TextView
+                        android:id="@+id/txtRequestType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/RequestType"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/rounded_textview_currency1"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="10"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|right"
+                        android:paddingStart="10dp"
+                        android:text="@string/Pic"
+                        android:textColor="@color/black"
+                        app:drawableRightCompat="@drawable/pic" />
+
+                    <ImageView
+                        android:id="@+id/imgWork"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5"
+                        android:gravity="center|right" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:layoutDirection="rtl"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                    <Button
+                        android:id="@+id/btnSelectWork"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_button"
+                        android:text="@string/SelectWork" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

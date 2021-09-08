@@ -1,0 +1,74 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="homeAsUpIndicator">@drawable/hamburger</item>
+        <item name="numberPickerTheme">@style/customNumberPicker</item>
+    </style>
+
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">#7236eb</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">#7236eb</item>
+        <item name="android:textColorPrimary">#7236eb</item>
+        <item name="android:textColor">#7236eb</item>
+        <item name="homeAsUpIndicator">@drawable/hamburger</item>
+    </style>
+    <style name="DrawerArrowStyle2" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">#ffffff</item>
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorPrimaryDark">#ffffff</item>
+        <item name="colorAccent">#ffffff</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="homeAsUpIndicator">@drawable/hamburger</item>
+    </style>
+    <style name="Theme.AppCompat.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+    </style>
+    <style name="FullScreenStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="TextAppearance.Medium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:font" tools:targetApi="o">@font/vazir_medium</item>
+    </style>
+
+    <style name="TextAppearance.Small">
+        <item name="android:textSize">14sp</item>
+        <item name="android:typeface">@font/iransans</item>
+    </style>
+
+    <style name="TextAppearance">TextAppearance</style>
+
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlActivated">#cb9867</item>
+        <item name="colorControlNormal">#d4d4d4</item>
+    </style>
+    <!-- Here is your custom date picker theme -->
+    <style name="customNumberPicker">
+        <!-- use this for text color -->
+        <item name="android:textColorPrimary">@android:color/holo_green_dark</item>
+
+        <!-- use this for divider color -->
+        <item name="colorControlNormal">@android:color/holo_purple</item>
+    </style>
+</resources>
