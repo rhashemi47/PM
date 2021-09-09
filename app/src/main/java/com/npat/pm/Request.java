@@ -42,6 +42,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import br.com.simplepass.loadingbutton.customViews.CircularProgressButton;
+
 public class Request extends AppCompatActivity {
 
     EditText edtSubject;
@@ -67,6 +69,7 @@ public class Request extends AppCompatActivity {
     InputStream inputStreamImg;
     String imgPath = null;
     Bitmap bitmap;
+    InternetConnection IC;
     static final int REQUEST_IMAGE_CAPTURE = 123;
     static final int REQUEST_IMAGE_Gallery = 124;
     private static final int PERMISSION_REQUEST_CAMERA = 0;
@@ -156,7 +159,15 @@ public class Request extends AppCompatActivity {
         FillSpinnerReqquestType();
         FillSpinnerLocaion();
         FillSpinnerRade();
-
+        if (PublicVariable.buttonRequset) {
+            btnRequset.setEnabled(true);
+            btnRequset.setBackgroundResource(R.drawable.rounded_button);
+        }
+        else
+        {
+            btnRequset.setEnabled(false);
+            btnRequset.setBackgroundResource(R.drawable.rounded_button_disable);
+        }
         spnRequestType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -204,23 +215,35 @@ public class Request extends AppCompatActivity {
         btnRequset.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                    if(edtSubject.getText().toString().compareTo("") > 0 && edtDescription.getText().toString().compareTo("") > 0)
-                    {
-                        WsRequestWork LWsRequestWork = new WsRequestWork(Request.this,
-                                Usercode,
-                                Personcode,
-                                edtSubject.getText().toString(),
-                                LocationCode,
-                                RadeCode,
-                                RequestTypeCode,
-                                edtDescription.getText().toString(),
-                                base64Str);
-                        LWsRequestWork.AsyncExecute();
-                    }
-                    else
-                    {
-                        Toast.makeText(Request.this, "عنوان درخواست و توضیحات را وارد فرمایید.", Toast.LENGTH_LONG).show();
-                    }
+                 if (PublicVariable.buttonRequset) {
+                     if (edtSubject.getText().toString().compareTo("") > 0 && edtDescription.getText().toString().compareTo("") > 0) {
+                         IC = new InternetConnection(Request.this);
+                         if (IC.isConnectingToInternet()) {
+                             try {
+                                 btnRequset.setEnabled(false);
+                                 btnRequset.setBackgroundResource(R.drawable.rounded_button_disable);
+                                 PublicVariable.buttonRequset=false;
+                                 WsRequestWork LWsRequestWork = new WsRequestWork(Request.this,
+                                         Usercode,
+                                         Personcode,
+                                         edtSubject.getText().toString(),
+                                         LocationCode,
+                                         RadeCode,
+                                         RequestTypeCode,
+                                         edtDescription.getText().toString(),
+                                         base64Str);
+                                 LWsRequestWork.AsyncExecute();
+                             } catch (Exception e) {
+
+                                 e.printStackTrace();
+                             }
+                         } else {
+                             Toast.makeText(Request.this, "لطفا ارتباط شبکه خود را چک کنید", Toast.LENGTH_SHORT).show();
+                         }
+                     } else {
+                         Toast.makeText(Request.this, "عنوان درخواست و توضیحات را وارد فرمایید.", Toast.LENGTH_LONG).show();
+                     }
+                 }
              }
          });
     }

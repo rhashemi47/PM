@@ -179,6 +179,9 @@ public class ShowImage extends AppCompatActivity {
                 case "MyWorkReportDone":
                     LoadActivity2(MyWorkReportDone.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode, "Code", Code, "base64Str", ImageReport, "Status", Status, "DescriptionReport", DescriptionReport);
                     break;
+                case "MyRequest":
+                    LoadActivity2(MyRequest.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode, "Code", Code, "base64Str", ImageReport, "Status", Status, "DescriptionReport", DescriptionReport);
+                    break;
             }
             return true;
         }

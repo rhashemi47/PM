@@ -55,7 +55,7 @@ public class WsRequestWork {
 			dbh.createDataBase();
 
    		} catch (IOException ioe) {
-
+			PublicVariable.buttonRequset=true;
    			throw new Error("Unable to create database");
 
    		}
@@ -65,7 +65,7 @@ public class WsRequestWork {
    			dbh.openDataBase();
 
    		} catch (SQLException sqle) {
-
+			PublicVariable.buttonRequset=true;
    			throw sqle;
    		}   		
 	}
@@ -80,12 +80,13 @@ public class WsRequestWork {
 				task.execute();
 			}	
 			 catch (Exception e) {
-
+				 PublicVariable.buttonRequset=true;
 	            e.printStackTrace();
 			 }
 		}
 		else
 		{
+			PublicVariable.buttonRequset=true;
 			Toast.makeText(this.activity.getApplicationContext(), "لطفا ارتباط شبکه خود را چک کنید", Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -109,6 +110,7 @@ public class WsRequestWork {
         		CallWsMethod("RequestWork");
         	}
 	    	catch (Exception e) {
+				PublicVariable.buttonRequset=true;
 	    		result = e.getMessage().toString();
 			}
 	        return result;
@@ -118,6 +120,7 @@ public class WsRequestWork {
         protected void onPostExecute(String result) {
         	if(result == null)
         	{
+				PublicVariable.buttonRequset=true;
 	            if(WsResponse.toString().compareTo("ER") == 0)
 	            {
 	            	Toast.makeText(this.activity.getApplicationContext(), "خطا در ارتباط با سرور", Toast.LENGTH_LONG).show();

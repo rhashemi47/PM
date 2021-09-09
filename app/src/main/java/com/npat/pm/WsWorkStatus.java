@@ -1,8 +1,10 @@
 package com.npat.pm;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -36,7 +38,8 @@ public class WsWorkStatus {
 	private String ImgReport;
 	private boolean CuShowDialog=true;
 	//Contractor
-	public WsWorkStatus(Activity activity, String WorkCode, String UserCode, String Status, String HamkarCode, String Description,String Mobile,String Personcode,String ImgReport) {
+	@SuppressLint("Range")
+	public WsWorkStatus(Activity activity, String WorkCode, String UserCode, String Status, String HamkarCode, String Description, String Mobile, String Personcode, String ImgReport) {
 		this.activity = activity;
 		this.WorkCode = WorkCode;
 		this.UserCode = UserCode;
@@ -46,28 +49,40 @@ public class WsWorkStatus {
 		this.Mobile = Mobile;
 		this.Personcode = Personcode;
 		this.ImgReport = ImgReport;
-		IC = new InternetConnection(this.activity.getApplicationContext());
-		PV = new PublicVariable();
-		
 		dbh=new DatabaseHelper(this.activity.getApplicationContext());
 		try {
 
 			dbh.createDataBase();
 
-   		} catch (IOException ioe) {
+		} catch (IOException ioe) {
 
-   			throw new Error("Unable to create database");
+			throw new Error("Unable to create database");
 
-   		}
+		}
 
-   		try {
+		try {
 
-   			dbh.openDataBase();
+			dbh.openDataBase();
 
-   		} catch (SQLException sqle) {
+		} catch (SQLException sqle) {
 
-   			throw sqle;
-   		}   		
+			throw sqle;
+		}
+
+		if(ImgReport.compareTo(" ") == 0 )
+		{
+			db=dbh.getReadableDatabase();
+			String query = "SELECT * FROM TempPic WHERE Code='" + this.WorkCode + "' ORDER BY Code DESC";
+			Cursor cursor= db.rawQuery(query,null);
+			if(cursor.getCount()>0)
+			{
+				cursor.moveToNext();
+				this.ImgReport = cursor.getString(cursor.getColumnIndex("Pic"));
+			}
+			db.close();
+		}
+		IC = new InternetConnection(this.activity.getApplicationContext());
+		PV = new PublicVariable();
 	}
 	
 	public void AsyncExecute()

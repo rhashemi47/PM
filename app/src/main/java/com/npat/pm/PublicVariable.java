@@ -17,7 +17,7 @@ public class PublicVariable {
 	public static final String LinkFileTextCheckVersion = "http://npat.ir/AndroidAppUpdate/PM/Version.txt";
 	public static final String DownloadAppUpdateLinkAPK = "http://npat.ir/AndroidAppUpdate/PM/PM.apk";
 	//********************************************************
-	public static boolean createtheard_GetLocation=true;
+	public static boolean buttonRequset=true;
 	public static boolean createthread_GetAcceptWork=true;
 	//********************************************************
 	public static boolean stopthread_GetAcceptWork=false;

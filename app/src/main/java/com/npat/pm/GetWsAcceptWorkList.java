@@ -185,35 +185,44 @@ public class GetWsAcceptWorkList {
 					value = res[i].split("##");
 					boolean check = checkCode(value[0]);
 					if (!check) {
-						query = "INSERT INTO AcceptWork (" +
-								"Code" +
-								",WorkType" +
-								",Subject" +
-								",Location" +
-								",Rade" +
-								",Description" +
-								",RequestType" +
-								",InsertUser" +
-								",InsertDate" +
-								",Pic" +
-								") VALUES('"
-								+ value[0] +
-								"','" + value[1] +
-								"','" + value[2] +
-								"','" + value[3] +
-								"','" + value[4] +
-								"','" + value[5] +
-								"','" + value[6] +
-								"','" + value[7] +
-								"','" + value[8] +
-								"','" + value[9] +
-								"')";
-						db.execSQL(query);
 						if(notifi) {
 							NotificationClass notifi = new NotificationClass();
 							notifi.Notificationm(this.activity, activity.getString(R.string.app_name), "کد سرویس: " + value[0] + "\n" + "عنوان:" + value[2], value[0], i, AcceptWorkList.class);
 						}
 					}
+				} catch (Exception e) {
+
+				}
+			}
+			//If Run Error in Insert to Database Delete All Table AcceptWork And Insert into table too
+			db.execSQL("delete from AcceptWork");
+			for (int i = 0; i < res.length; i++) {
+				try {
+					value = res[i].split("##");
+					query = "INSERT INTO AcceptWork (" +
+							"Code" +
+							",WorkType" +
+							",Subject" +
+							",Location" +
+							",Rade" +
+							",Description" +
+							",RequestType" +
+							",InsertUser" +
+							",InsertDate" +
+							",Pic" +
+							") VALUES('"
+							+ value[0] +
+							"','" + value[1] +
+							"','" + value[2] +
+							"','" + value[3] +
+							"','" + value[4] +
+							"','" + value[5] +
+							"','" + value[6] +
+							"','" + value[7] +
+							"','" + value[8] +
+							"','" + value[9] +
+							"')";
+					db.execSQL(query);
 				} catch (Exception e) {
 
 				}

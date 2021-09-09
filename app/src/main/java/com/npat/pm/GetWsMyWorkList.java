@@ -232,6 +232,43 @@ public class GetWsMyWorkList {
 
 				}
 			}
+			////If Run Error in Insert to Database Delete All Table MyWork And Insert into table too
+			db.execSQL("delete from MyWork");
+			for (int i = 0; i < res.length; i++) {
+				try {
+					value = res[i].split("##");
+					query = "INSERT INTO MyWork (" +
+								"Code" +
+								",WorkType" +
+								",Subject" +
+								",Location" +
+								",Rade" +
+								",Description" +
+								",Status" +
+								",Status2" +
+								",InsertUser" +
+								",StatusDesc" +
+								",Pic" +
+								") VALUES('"
+								+ value[0] +
+								"','" + value[1] +
+								"','" + value[2] +
+								"','" + value[3] +
+								"','" + value[4] +
+								"','" + value[5] +
+								"','" + value[6] +
+								"','" + value[7] +
+								"','" + value[8] +
+								"','" + value[9] +
+								"','" + value[10] +
+								"')";
+						db.execSQL(query);
+				}
+				catch (Exception e)
+				{
+
+				}
+			}
 		}
 		db.close();
 		dbh.close();

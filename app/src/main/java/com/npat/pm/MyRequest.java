@@ -49,7 +49,7 @@ public class MyRequest extends AppCompatActivity {
          txtDescription= (TextView) findViewById(R.id.txtDescription);
          txtRequestType=(TextView) findViewById(R.id.txtRequestType);
          txtStatus=(TextView) findViewById(R.id.txtStatus);
-        imgWork=(ImageView) findViewById(R.id.imgWork);
+         imgWork=(ImageView) findViewById(R.id.imgWork);
 
 
         try
@@ -117,23 +117,28 @@ public class MyRequest extends AppCompatActivity {
                 txtRade.setText(cursors.getString(cursors.getColumnIndex("Rade")));
                 txtDescription.setText(cursors.getString(cursors.getColumnIndex("Description")));
                 txtStatus.setText(cursors.getString(cursors.getColumnIndex("Status")));
+                String StrBmp = cursors.getString(cursors.getColumnIndex("Pic"));
+                if(StrBmp.compareTo("ERROR") != 0 && StrBmp.length()>10) {
+                    Bitmap bmp = ImageConvertor.Base64ToBitmap(StrBmp);
+                    imgWork.setImageBitmap(bmp);
+                }
             }
         }
 
         cursors.close();
         db.close();
-				dbh.close();
+		dbh.close();
         imgWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoadActivity(ShowImage.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "MyWork","Table", "Request");
+                LoadActivity(ShowImage.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "MyRequest","Table", "Request");
             }
         });
     }
     @Override
     public boolean onKeyDown( int keyCode, KeyEvent event )  {
         if ( keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 ) {
-            LoadActivity(RequestList.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "MyWork","Table", "Request");
+            LoadActivity(RequestList.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "MyRequest","Table", "Request");
             return true;
         }
 

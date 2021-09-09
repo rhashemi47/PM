@@ -17,7 +17,6 @@ import java.util.HashMap;
 @SuppressLint("NewApi")
 public class AdapterListHamkaran extends BaseAdapter {
 
-
     private ArrayList<HashMap<String, String>> list;
     private Activity activity;
     private DatabaseHelper dbh;
@@ -74,9 +73,9 @@ public class AdapterListHamkaran extends BaseAdapter {
         String Mobile = map.get("Mobile");
         String Personcode = map.get("Personcode");
         holder.txtCode.setText(code);
-        holder.txtCode.setTag(code + "##" + workCode + "##" + usercode + "##" + Description+ "##" + Mobile + "##" + Personcode + "##" + ImgReport);
+        holder.txtCode.setTag(code + "##" + workCode + "##" + usercode + "##" + Description+ "##" + Mobile + "##" + Personcode + "##" + ImgReport + "##" );
         holder.txtCode.setOnClickListener(TextViewItemOnclick);
-        holder.txtTitle.setTag(code + "##" + workCode + "##" + usercode + "##" + Description+ "##" + Mobile + "##" + Personcode +  "##" + ImgReport);
+        holder.txtTitle.setTag(code + "##" + workCode + "##" + usercode + "##" + Description+ "##" + Mobile + "##" + Personcode +  "##" + ImgReport + "##");
         holder.txtTitle.setText(Name);
         holder.txtTitle.setOnClickListener(TextViewItemOnclick);
 

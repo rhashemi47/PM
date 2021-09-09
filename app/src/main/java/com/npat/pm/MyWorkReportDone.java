@@ -144,7 +144,7 @@ public class MyWorkReportDone extends AppCompatActivity {
             }
         }
         etdReportDesc.setText(DescriptionReport);
-        if(base64Str.compareTo("")!=0)
+        if(base64Str.compareTo(" ")!=0)
         {
             imgReport.setImageBitmap(ImageConvertor.Base64ToBitmap(base64Str));
         }
@@ -180,7 +180,7 @@ public class MyWorkReportDone extends AppCompatActivity {
                             WsWorkStatus LWorkStatus = new WsWorkStatus(MyWorkReportDone.this, Code, Usercode, "2", "0", etdReportDesc.getText().toString(), Mobile, Personcode, base64Str);
                             LWorkStatus.AsyncExecute();
                         } else if (Status.compareTo("3") == 0) {
-                            LoadActivity2(ListHamkaran.class, "WorkCode", Code, "Usercode", Usercode, "Description", etdReportDesc.getText().toString(), "Mobile", Mobile, "Personcode", Personcode, "ImgReport", base64Str);
+                            LoadActivity2(ListHamkaran.class, "WorkCode", Code, "Usercode", Usercode, "Description", etdReportDesc.getText().toString(), "Mobile", Mobile, "Personcode", Personcode, "ImgReport", " ");
                         } else if (Status.compareTo("4") == 0) {
                             WsWorkStatus LWorkStatus = new WsWorkStatus(MyWorkReportDone.this, Code, Usercode, "4", "0", etdReportDesc.getText().toString(), Mobile, Personcode, base64Str);
                             LWorkStatus.AsyncExecute();
@@ -325,6 +325,22 @@ public class MyWorkReportDone extends AppCompatActivity {
                 imgReport.setVisibility(View.VISIBLE);
                 imgReport.setImageBitmap(imageBitmap);
                 base64Str = ImageConvertor.BitmapToBase64(imageBitmap);
+                if(!db.isOpen())
+                {
+                    db=dbh.getWritableDatabase();
+                    if(!db.isOpen())
+                    {
+                        db=dbh.getWritableDatabase();
+                        if(!checkCode(Code)) {
+                            db.execSQL("INSERT INTO TempPic VALUES ('" + Code + "','" + base64Str + "')");
+                        }
+                        else {
+                            db.execSQL("UPDATE TempPic SET Pic ='" + base64Str + "' WHERE Code='"+ Code + "'");
+                        }
+                        db.close();
+                    }
+                    db.close();
+                }
             }
         }
         else if (requestCode == REQUEST_IMAGE_Gallery && resultCode == RESULT_OK)
@@ -340,6 +356,18 @@ public class MyWorkReportDone extends AppCompatActivity {
                 imgReport.setVisibility(View.VISIBLE);
                 imgReport.setImageBitmap(bitmap);
                 base64Str = ImageConvertor.BitmapToBase64(bitmap);
+                if(!db.isOpen())
+                {
+                    if(!checkCode(Code)) {
+                        db=dbh.getWritableDatabase();
+                        db.execSQL("INSERT INTO TempPic VALUES ('" + Code + "','" + base64Str + "')");
+                    }
+                    else {
+                        db=dbh.getWritableDatabase();
+                        db.execSQL("UPDATE TempPic SET Pic ='" + base64Str + "' WHERE Code='"+ Code + "'");
+                    }
+                    db.close();
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -352,5 +380,21 @@ public class MyWorkReportDone extends AppCompatActivity {
         int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
         cursor.moveToFirst();
         return cursor.getString(column_index);
+    }
+    public boolean checkCode(String codeStr)
+    {
+        db=dbh.getReadableDatabase();
+        String query = "SELECT * FROM TempPic WHERE Code='" + codeStr + "'";
+        Cursor cursor= db.rawQuery(query,null);
+        if(cursor.getCount()>0)
+        {
+            db.close();
+            return true;
+        }
+        else
+        {
+            db.close();
+            return false;
+        }
     }
 }

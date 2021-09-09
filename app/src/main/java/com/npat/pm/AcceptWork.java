@@ -121,7 +121,7 @@ public class AcceptWork extends AppCompatActivity {
                 txtDescription.setText(cursors.getString(cursors.getColumnIndex("Description")));
                 txtRequestType.setText(cursors.getString(cursors.getColumnIndex("RequestType")));
                 String bitStr=cursors.getString(cursors.getColumnIndex("Pic"));
-                if(bitStr != null && bitStr.compareTo("ERROR") > 0) {
+                if(bitStr != null && bitStr.compareTo("ERROR") != 0 && bitStr.length()>10) {
                     Bitmap bitmap = ImageConvertor.Base64ToBitmap(bitStr);
                     imgWork.setImageBitmap(bitmap);
                 }

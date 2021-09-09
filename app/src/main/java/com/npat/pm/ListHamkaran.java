@@ -88,7 +88,7 @@ public class ListHamkaran extends AppCompatActivity {
             ImgReport = getIntent().getStringExtra("ImgReport").toString();
         }
         catch (Exception e) {
-            ImgReport = "";
+            ImgReport = " ";
         }
         dbh=new DatabaseHelper(getApplicationContext());
         try {
@@ -194,7 +194,7 @@ public class ListHamkaran extends AppCompatActivity {
         }
         cursors.close();
         db.close();
-				dbh.close();
+		dbh.close();
     }
     @Override
     public boolean onKeyDown( int keyCode, KeyEvent event )  {

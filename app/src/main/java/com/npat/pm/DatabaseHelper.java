@@ -173,7 +173,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					cursors.close();
 				}
 			}
-			if (PublicVariable.DATABASE_VERSION > 4 || PublicVariable.DATABASE_VERSION==1) {
+			if (PublicVariable.DATABASE_VERSION != 5) {
 
 				//***************************android_metadata*********************
 				if (!doesTableExist(db, "android_metadata")) {
@@ -346,10 +346,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					db.execSQL("INSERT INTO \"main\".\"sqlite_sequence\" VALUES ('Links', 1);");
 					db.execSQL("INSERT INTO \"main\".\"sqlite_sequence\" VALUES ('login', 3);");
 				}
+				//****************************TempPic*******************************************
+				if (!doesTableExist(db, "TempPic")) {
+					//db.execSQL("DROP TABLE IF EXISTS \"main\".\"RequsetType\"");
+					db.execSQL("CREATE TABLE \"TempPic\" (\n" +
+							"\"Code\"  TEXT,\n" +
+							"\"Pic\"  TEXT\n" +
+							")");
+				}
 				//*******************************************************************************
-				PublicVariable.DATABASE_VERSION = 4;
-				db.execSQL("Update dbVersionPM set version = '4'");
-				db.setVersion(4);
+				PublicVariable.DATABASE_VERSION = 5;
+				db.execSQL("Update dbVersionPM set version = '5'");
+				db.setVersion(5);
 			}
 	}
 	@Override
