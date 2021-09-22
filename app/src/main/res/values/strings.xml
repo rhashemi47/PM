@@ -43,12 +43,12 @@
     <string name="Pic">تصویر</string>
     <string name="picWork">تصویر کار</string>
     <string name="ReportDuty">گزارش کارهای انجام شده من</string>
-    <string name="ReportHamkarDuty">کارهای سپرده شده به سایر همکاران من</string>
+    <string name="ReportHamkarDuty">لیست کارهای در حال انجام گروه من</string>
     <string name="FromDate">از تاریخ</string>
     <string name="ToDate">تا تاریخ</string>
     <string name="Apply">اعمال فیلتر</string>
-    <string name="title_activity_ReportOtherWorkStatus">کارهای سپرده شده به سایر همکاران</string>
-    <string name="RequestList">لیست درخواست ها</string>
+    <string name="title_activity_ReportOtherWorkStatus">لیست کارهای در حال انجام گروه من</string>
+    <string name="RequestList">لیست درخواست های من</string>
     <string name="DescRequest">شرح درخواست</string>
     <string name="InsertUser">درخواست کننده</string>
     <string name="NameHamkar">نام همکار</string>

@@ -40,11 +40,13 @@ public class ShowImage extends AppCompatActivity {
     String ImageReport;
     String Status;
     String DescriptionReport;
+    ImageView imgExit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pic_work);
         ImgWorkLarg = (ImageView) findViewById(R.id.ImgWorkLarg);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         try
         {
             Code = getIntent().getStringExtra("Code").toString();
@@ -156,6 +158,13 @@ public class ShowImage extends AppCompatActivity {
                 ImgWorkLarg.setImageBitmap(bitmap);
             }
         }
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
+            }
+        });
     }
 
 

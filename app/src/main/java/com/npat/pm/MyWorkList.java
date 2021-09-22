@@ -49,6 +49,7 @@ public class MyWorkList extends AppCompatActivity {
     String Usercode;
     String Personcode;
     String QrCodeStr= "";
+    ImageView imgExit;
     private static final int PERMISSION_REQUEST_CAMERA = 0;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     @Override
@@ -58,6 +59,7 @@ public class MyWorkList extends AppCompatActivity {
         lstMyWork = (ListView) findViewById(R.id.lstMyWork);
         imgQRcode = (ImageView) findViewById(R.id.imgQRcode);
         previewView = findViewById(R.id.activity_main_previewView);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         try
         {
@@ -117,6 +119,13 @@ public class MyWorkList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoadActivity(GetBarcode.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode);
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

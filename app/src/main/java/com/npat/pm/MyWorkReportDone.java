@@ -54,6 +54,7 @@ public class MyWorkReportDone extends AppCompatActivity {
     InputStream inputStreamImg;
     String imgPath = null;
     Bitmap bitmap;
+    ImageView imgExit;
     static final int REQUEST_IMAGE_CAPTURE = 123;
     static final int REQUEST_IMAGE_Gallery = 124;
     private static final int PERMISSION_REQUEST_CAMERA = 0;
@@ -68,6 +69,7 @@ public class MyWorkReportDone extends AppCompatActivity {
         btnSend=(Button) findViewById(R.id.btnSend);
         btnTakePic=(Button) findViewById(R.id.btnTakePic);
         imgReport=(ImageView) findViewById(R.id.imgReport);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
 
         try
         {
@@ -204,6 +206,13 @@ public class MyWorkReportDone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 requestCamera();
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -25,11 +28,17 @@ public class AcceptWorkList extends AppCompatActivity {
     String Mobile;
     String Usercode;
     String Personcode;
+    ImageView imgExit;
+    long starttime;
+    long endtime;
+    private boolean doubleBackToExitPressedOnce=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.accept_work_list);
         lstAcceptWork = (ListView) findViewById(R.id.lstAcceptWork);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         try
         {
             Mobile = getIntent().getStringExtra("Mobile").toString();
@@ -76,7 +85,20 @@ public class AcceptWorkList extends AppCompatActivity {
 				dbh.close();
             }
         }
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                doubleBackToExitPressedOnce = 0;
+//            }
+//        }, 2000);
         FillData();
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
+            }
+        });
     }
 
     @SuppressLint("Range")
@@ -133,13 +155,50 @@ public class AcceptWorkList extends AppCompatActivity {
         db.close();
 		dbh.close();
     }
+//    @Override
+//    public void onBackPressed() {
+//        this.doubleBackToExitPressedOnce += 1;
+//        if (doubleBackToExitPressedOnce > 1) {
+//            super.onBackPressed();
+//            finish();
+//            return;
+//        }
+//        else
+//        {
+//            LoadActivity(MainActivity.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode);
+//        }
+//    }
     @Override
     public boolean onKeyDown( int keyCode, KeyEvent event )  {
-        if ( keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 ) {
+        if  ( keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 ) {
             LoadActivity(MainActivity.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode);
             return true;
         }
-
+        else if ( keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() > 0 ) {
+            finish();
+             return true;
+        }
+//        if  ( keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0 ) {
+//            if (!doubleBackToExitPressedOnce) {
+//                starttime = System.currentTimeMillis();
+//                //Log.d("Main Java Log", "Start time : " + String.valueOf(starttime));
+//                doubleBackToExitPressedOnce = true;
+//                return true;
+//            } else {
+//                endtime = System.currentTimeMillis();
+//                //Log.d("Main Java Log", "End time : " + String.valueOf(endtime));
+//                if (endtime - starttime <= 500) { // time interval for second click
+//                    doubleBackToExitPressedOnce = false;
+//                    event.startTracking();
+//                    finish();
+//                    return true;
+//                }
+//                else
+//                {
+//                    LoadActivity(MainActivity.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode);
+//                }
+//            }
+//        }
         return super.onKeyDown( keyCode, event );
     }
     public void LoadActivity(Class<?> Cls

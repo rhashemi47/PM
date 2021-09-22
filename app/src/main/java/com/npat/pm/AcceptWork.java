@@ -36,12 +36,14 @@ public class AcceptWork extends AppCompatActivity {
     String Usercode;
     String Personcode;
     String WorkCode;
+    ImageView imgExit;
     @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.detail_accept_work);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
          txtCode=(TextView) findViewById(R.id.txtCode);
          txtSubject=(TextView) findViewById(R.id.txtSubject);
          WorkType=(TextView) findViewById(R.id.txtWorkType);
@@ -141,6 +143,13 @@ public class AcceptWork extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoadActivity(ShowImage.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "AcceptWork","Table", "AcceptWork");
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

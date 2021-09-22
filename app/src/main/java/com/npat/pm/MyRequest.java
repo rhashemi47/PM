@@ -28,6 +28,7 @@ public class MyRequest extends AppCompatActivity {
     TextView txtRequestType;
     TextView txtStatus;
     ImageView imgWork;
+    ImageView imgExit;
 
     DatabaseHelper dbh;
     SQLiteDatabase db;
@@ -50,6 +51,7 @@ public class MyRequest extends AppCompatActivity {
          txtRequestType=(TextView) findViewById(R.id.txtRequestType);
          txtStatus=(TextView) findViewById(R.id.txtStatus);
          imgWork=(ImageView) findViewById(R.id.imgWork);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
 
 
         try
@@ -132,6 +134,13 @@ public class MyRequest extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoadActivity(ShowImage.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "MyRequest","Table", "Request");
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

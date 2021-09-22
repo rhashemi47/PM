@@ -187,32 +187,6 @@ public class SyncWsMyWorkList {
 					value = res[i].split("##");
 					boolean check = checkCode(value[0]);
 					if (!check) {
-						query = "INSERT INTO MyWork (" +
-								"Code" +
-								",WorkType" +
-								",Subject" +
-								",Location" +
-								",Rade" +
-								",Description" +
-								",Status" +
-								",Status2" +
-								",InsertUser" +
-								",StatusDesc" +
-								",Pic" +
-								") VALUES('"
-								+ value[0] +
-								"','" + value[1] +
-								"','" + value[2] +
-								"','" + value[3] +
-								"','" + value[4] +
-								"','" + value[5] +
-								"','" + value[6] +
-								"','" + value[7] +
-								"','" + value[8] +
-								"','" + value[9] +
-								"','" + value[10] +
-								"')";
-						db.execSQL(query);
 						if(notifi) {
 							NotificationClass notifi = new NotificationClass();
 							notifi.Notificationm(this.activity, activity.getString(R.string.app_name), "کد سرویس: " + value[0] + "\n" + "عنوان:" + value[2], value[0], i, MyWorkList.class);
@@ -220,8 +194,8 @@ public class SyncWsMyWorkList {
 					}
 					else if(!checkStatusAndUser(value[0],value[6],value[8]))
 					{
-						query = "UPDATE MyWork SET Status='" + value[6] + "',InsertUser='" + value[8] + "' WHERE Code='" + value[0]+ "'";
-						db.execSQL(query);
+//						query = "UPDATE MyWork SET Status='" + value[6] + "',InsertUser='" + value[8] + "' WHERE Code='" + value[0]+ "'";
+//						db.execSQL(query);
 						if(notifi) {
 							NotificationClass notifi = new NotificationClass();
 							notifi.Notificationm(this.activity, activity.getString(R.string.app_name), "کد سرویس: " + value[0] + "\n" + "عنوان:" + value[2], value[0], i, MyWorkList.class);
@@ -233,6 +207,7 @@ public class SyncWsMyWorkList {
 
 				}
 			}
+		}
 			//If Run Error in Insert to Database Delete All Table MyWork And Insert into table too
 			db.execSQL("delete from MyWork");
 			for (int i = 0; i < res.length; i++) {
@@ -270,7 +245,6 @@ public class SyncWsMyWorkList {
 
 				}
 			}
-		}
 		db.close();
 		dbh.close();
 	}

@@ -42,6 +42,7 @@ public class MyWork extends AppCompatActivity {
     String Personcode;
     String WorkCode;
     String Status="";
+    ImageView imgExit;
     @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class MyWork extends AppCompatActivity {
         btnImpossible=(Button) findViewById(R.id.btnImpossible);
         imgWork=(ImageView) findViewById(R.id.imgWork);
         LinearStatusDesc=(LinearLayout) findViewById(R.id.LinearStatusDesc);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
 
 
         try
@@ -199,6 +201,13 @@ public class MyWork extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoadActivity(ShowImage.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "MyWork","Table", "MyWork");
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

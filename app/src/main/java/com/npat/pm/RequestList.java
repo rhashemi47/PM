@@ -34,6 +34,7 @@ public class RequestList extends AppCompatActivity {
     String Mobile;
     String Usercode;
     String Personcode;
+    ImageView imgExit;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class RequestList extends AppCompatActivity {
         lstRequest = (ListView) findViewById(R.id.lstRequest);
         imgQRcode = (ImageView) findViewById(R.id.imgQRcode);
         previewView = findViewById(R.id.activity_main_previewView);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         try
         {
@@ -94,6 +96,13 @@ public class RequestList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoadActivity(GetBarcode.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode);
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

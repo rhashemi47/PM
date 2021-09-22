@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -31,11 +32,13 @@ public class ReportHamkarDuty extends AppCompatActivity {
     String Mobile;
     String Usercode;
     String Personcode;
+    ImageView imgExit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_report_hamkar_duty);
         lstReportHamkarDuty = (ListView) findViewById(R.id.lstReportHamkarDuty);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         try
         {
             Mobile = getIntent().getStringExtra("Mobile").toString();
@@ -84,6 +87,13 @@ public class ReportHamkarDuty extends AppCompatActivity {
         }
 
         FillData();
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
+            }
+        });
     }
 
     @SuppressLint("Range")

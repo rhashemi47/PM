@@ -69,6 +69,7 @@ public class Request extends AppCompatActivity {
     InputStream inputStreamImg;
     String imgPath = null;
     Bitmap bitmap;
+    ImageView imgExit;
     InternetConnection IC;
     static final int REQUEST_IMAGE_CAPTURE = 123;
     static final int REQUEST_IMAGE_Gallery = 124;
@@ -94,6 +95,7 @@ public class Request extends AppCompatActivity {
         btnRequset=(Button) findViewById(R.id.btnRequset);
         btnTakePic=(Button) findViewById(R.id.btnTakePic);
         imgRequest=(ImageView) findViewById(R.id.imgRequest);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
 
         //***********************
         spnRequestType.setTitle("نوع درخواست");
@@ -246,6 +248,13 @@ public class Request extends AppCompatActivity {
                  }
              }
          });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
+            }
+        });
     }
 
     private void requestCamera() {

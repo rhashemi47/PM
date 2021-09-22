@@ -7,6 +7,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -34,6 +36,7 @@ public class ListHamkaran extends AppCompatActivity {
     ListAdapter adapter;
     DatabaseHelper dbh;
     SQLiteDatabase db;
+    ImageView imgExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,7 @@ public class ListHamkaran extends AppCompatActivity {
         setContentView(R.layout.list_hamkaran);
 
         lstHamkaran = (ListView) findViewById(R.id.lstHamkaran);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         try
         {
             WorkCode = getIntent().getStringExtra("WorkCode").toString();
@@ -132,6 +136,13 @@ public class ListHamkaran extends AppCompatActivity {
             public boolean onQueryTextChange(String s) {
                 FillData(s);
                 return false;
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

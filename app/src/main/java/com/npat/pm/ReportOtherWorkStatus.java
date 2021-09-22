@@ -37,6 +37,7 @@ public class ReportOtherWorkStatus extends AppCompatActivity {
     String Usercode;
     String Personcode;
     String WorkCode;
+    ImageView imgExit;
     @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class ReportOtherWorkStatus extends AppCompatActivity {
         txtInsertUser=(TextView) findViewById(R.id.txtInsertUser);
         txtInsertUser2=(TextView) findViewById(R.id.txtInsertUser2);
         imgWork=(ImageView) findViewById(R.id.imgWork);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
 
 
         try
@@ -137,6 +139,13 @@ public class ReportOtherWorkStatus extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoadActivity(ShowImage.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"Code", txtCode.getText().toString(),"ActivityClass", "ReportOtherWorkStatus","Table", "OtherWorkStatusReport");
+            }
+        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
             }
         });
     }

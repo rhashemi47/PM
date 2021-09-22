@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +31,7 @@ public class FilterReportDuty extends AppCompatActivity {
     String Personcode;
     String StartDateMiladi;
     String EndDateMiladi;
+    ImageView imgExit;
     private PersianDatePickerDialog picker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class FilterReportDuty extends AppCompatActivity {
         etStartDate = (EditText) findViewById(R.id.etStartDate);
         etEndDate = (EditText) findViewById(R.id.etEndDate);
         btnApply = (Button) findViewById(R.id.btnApply);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         try
         {
             Mobile = getIntent().getStringExtra("Mobile").toString();
@@ -153,6 +156,13 @@ public class FilterReportDuty extends AppCompatActivity {
                }
            }
        });
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
+            }
+        });
     }
 
 

@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -32,7 +33,9 @@ public class ServiceGetUpdate extends Service {
 
     @Override
     public int onStartCommand(final Intent intent, int flags, int startId) {
-        continue_or_stop=true; dbh = new DatabaseHelper(getApplicationContext());
+        Log.e("Service","Start Service");
+        continue_or_stop=true;
+        dbh = new DatabaseHelper(getApplicationContext());
         try {
 
             dbh.createDataBase();
@@ -61,6 +64,7 @@ public class ServiceGetUpdate extends Service {
                              runnable =new Runnable() {
                                 @Override
                                 public void run() {
+                                    Log.e("Service","Run Service");
                                     try { if(!db.isOpen()) { db = dbh.getReadableDatabase();}}	catch (Exception ex){	db = dbh.getReadableDatabase();	}
                                     Cursor coursors = db.rawQuery("SELECT * FROM login", null);
                                     for (int i = 0; i < coursors.getCount(); i++) {
@@ -91,6 +95,7 @@ public class ServiceGetUpdate extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Log.e("Service","Stop Service");
         continue_or_stop=false;
     }
 }

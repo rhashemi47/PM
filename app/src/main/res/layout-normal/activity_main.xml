@@ -63,10 +63,9 @@
                     android:layout_height="20dp"
                     android:layout_gravity="left|center"
                     android:background="@drawable/logout"
-                    android:id="@+id/imgLogout"
+                    android:id="@+id/imgExit"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone"/>
+                    android:layout_marginEnd="10dp"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

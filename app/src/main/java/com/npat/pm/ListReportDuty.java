@@ -34,6 +34,7 @@ public class ListReportDuty extends AppCompatActivity {
     String Mobile;
     String Usercode;
     String Personcode;
+    ImageView imgExit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class ListReportDuty extends AppCompatActivity {
         lstReportDuty = (ListView) findViewById(R.id.lstReportDuty);
         imgQRcode = (ImageView) findViewById(R.id.imgQRcode);
         previewView = findViewById(R.id.activity_main_previewView);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         try
         {
             Mobile = getIntent().getStringExtra("Mobile").toString();
@@ -88,6 +90,13 @@ public class ListReportDuty extends AppCompatActivity {
             }
         }
         FillData();
+        imgExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Logout();
+                finish();
+            }
+        });
     }
 
     @SuppressLint("Range")

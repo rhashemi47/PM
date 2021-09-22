@@ -112,7 +112,6 @@ public class Setting extends Activity {
 				}
 			}
 		}).start();
-        
 	}
 	
 	

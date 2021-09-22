@@ -20,6 +20,7 @@ import android.graphics.Typeface;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,13 +48,14 @@ public class MainActivity extends AppCompatActivity {
     Button btnReportDuty;
     Button btnReportHamkarDuty;
     TextView txtUpdate;
-    ImageView imgLogout;
+    ImageView imgExit;
     ImageView imgUpdate;
     ImageView imgSetting;
     String Mobile;
     String Usercode;
     String Personcode;
     private String AppVersion;
+    private boolean doubleBackToExitPressedOnce = false;
    public int MY_PERMISSIONS_REQUEST_READ_CONTACTS=124;
 
     @SuppressLint("Range")
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btnRequset = (Button) findViewById(R.id.btnRequset);
         btnReportDuty = (Button) findViewById(R.id.btnReportDuty);
         btnReportHamkarDuty = (Button) findViewById(R.id.btnReportHamkarDuty);
-        imgLogout = (ImageView) findViewById(R.id.imgLogout);
+        imgExit = (ImageView) findViewById(R.id.imgExit);
         imgUpdate = (ImageView) findViewById(R.id.imgUpdate);
         imgSetting = (ImageView) findViewById(R.id.imgSetting);
         txtUpdate = (TextView) findViewById(R.id.txtUpdate);
@@ -193,7 +195,12 @@ public class MainActivity extends AppCompatActivity {
 //                }
                 Intent serviceIntent = new Intent(getApplicationContext(),ServiceGetUpdate.class);
                 try {
-                    startService(serviceIntent);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        this.startForegroundService(serviceIntent);
+                    }else {
+                        // Crashlytics.log("crash for first time, trying another.");
+                        this.startService(serviceIntent);
+                    }
                 }catch ( Exception e1){
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         this.startForegroundService(serviceIntent);
@@ -252,10 +259,11 @@ public class MainActivity extends AppCompatActivity {
                 LoadActivity(ReportHamkarDuty.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode);
             }
         });
-        imgLogout.setOnClickListener(new View.OnClickListener() {
+        imgExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Logout();
+                //Logout();
+                finish();
             }
         });
         imgUpdate.setOnClickListener(new View.OnClickListener() {
@@ -276,6 +284,31 @@ public class MainActivity extends AppCompatActivity {
                 LoadActivity2(Setting.class, "Mobile", Mobile,"Usercode", Usercode,"Personcode", Personcode,"ActivityGo","MainMenu");
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+
+            if (doubleBackToExitPressedOnce) {
+//                Intent startMain = new Intent(Intent.ACTION_MAIN);
+//
+//                startMain.addCategory(Intent.CATEGORY_HOME);
+//
+//                startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                //startActivity(startMain);
+
+                finish();
+                super.onBackPressed();
+                return;
+            }
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "جهت خروج از برنامه مجددا دکمه برگشت را لمس کنید", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
     }
     public void LoadActivity(Class<?> Cls
             ,String VariableName1,String VariableValue1

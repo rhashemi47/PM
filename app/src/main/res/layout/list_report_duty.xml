@@ -25,6 +25,33 @@
             android:layoutDirection="rtl"
             android:gravity="center"
             android:background="@drawable/background_title" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layoutDirection="rtl"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textColor="#ffffff"
+                    android:text="@string/title_activity_my_work_list"
+                    android:layout_gravity="center"
+                    android:textSize="22sp"
+                    android:id="@+id/txtUpdate"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="left|center"
+                    android:background="@drawable/logout"
+                    android:id="@+id/imgExit"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"/>
+            </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 <ListView
