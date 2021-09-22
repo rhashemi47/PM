@@ -27,6 +27,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -71,6 +74,36 @@ public class MainActivity extends AppCompatActivity {
         imgUpdate = (ImageView) findViewById(R.id.imgUpdate);
         imgSetting = (ImageView) findViewById(R.id.imgSetting);
         txtUpdate = (TextView) findViewById(R.id.txtUpdate);
+        YoYo.with(Techniques.BounceInRight)
+                .duration(1000)
+                .repeat(1)
+                .playOn(findViewById(R.id.btnAcceptWork));
+        //*********************************************************
+        YoYo.with(Techniques.BounceInRight)
+                .duration(1000)
+                .repeat(1)
+                .playOn(findViewById(R.id.btnDuty));
+        //*********************************************************
+        YoYo.with(Techniques.BounceInRight)
+                .duration(1000)
+                .repeat(1)
+                .playOn(findViewById(R.id.btnRequsetList));
+        //*********************************************************
+        YoYo.with(Techniques.BounceInRight)
+                .duration(1000)
+                .repeat(1)
+                .playOn(findViewById(R.id.btnRequset));
+        //*********************************************************
+        YoYo.with(Techniques.BounceInRight)
+                .duration(1000)
+                .repeat(1)
+                .playOn(findViewById(R.id.btnReportDuty));
+        //*********************************************************
+        YoYo.with(Techniques.BounceInRight)
+                .duration(1000)
+                .repeat(1)
+                .playOn(findViewById(R.id.btnReportHamkarDuty));
+        //*********************************************************
         PackageInfo pInfo = null;
         try {
             pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);

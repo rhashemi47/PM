@@ -27,6 +27,7 @@
         android:gravity="center"
         android:textAlignment="gravity"
         android:hint="@string/PhoneNumber"
+        android:textSize="24sp"
         android:inputType="number" >
 
         <requestFocus />
@@ -44,12 +45,13 @@
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="20dp"
+        android:textSize="24sp"
         android:text="@string/GiveAgreeCode" />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/imgSetting"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/btnLogin"
         android:src="@drawable/setting"/>
     <TextView
@@ -57,7 +59,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtSetting"
         android:text="@string/Setting"
+        android:textColor="@color/colortab1"
         android:layout_below="@+id/imgSetting"
+        android:textSize="24sp"
         android:gravity="center"/>
 
 </RelativeLayout>

@@ -195,6 +195,8 @@ public class SyncWsAcceptWorkList {
 
 				}
 			}
+
+		}
 			//If Run Error in Insert to Database Delete All Table AcceptWork And Insert into table too
 			db.execSQL("delete from AcceptWork");
 			for (int i = 0; i < res.length; i++) {
@@ -228,7 +230,6 @@ public class SyncWsAcceptWorkList {
 
 				}
 			}
-		}
 		db.close();
 		dbh.close();
 

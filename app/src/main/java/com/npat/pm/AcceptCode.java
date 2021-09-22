@@ -2,6 +2,7 @@ package com.npat.pm;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.phone.SmsRetriever;
+import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
+
 public class AcceptCode extends Activity {
 	InternetConnection IC;
 	EditText EditTextAcceptCode;
@@ -20,11 +24,14 @@ public class AcceptCode extends Activity {
 	String Mobile;
 	String Usercode;
 	String Personcode;
+	private IntentFilter intentFilter;
+	private AppSMSBroadcastReceiver appSMSBroadcastReceiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_acceptcode);
-        
+		smsListener();
+		initBroadCast();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         
         overridePendingTransition(R.drawable.activity_open_translate,R.drawable.activity_close_scale);
@@ -89,4 +96,44 @@ public class AcceptCode extends Activity {
 			}
 		});
     }
+	private void initBroadCast() {
+		intentFilter = new IntentFilter("com.google.android.gms.auth.api.phone.SMS_RETRIEVED");
+		appSMSBroadcastReceiver = new AppSMSBroadcastReceiver();
+		appSMSBroadcastReceiver.setOnSmsReceiveListener(new AppSMSBroadcastReceiver.OnSmsReceiveListener() {
+			@Override
+			public void onReceive(String code) {
+				//Toast.makeText(AcceptCode.this, code, Toast.LENGTH_SHORT).show();
+				if(IC.isConnectingToInternet()==true)
+				{
+					EditTextAcceptCode.setText(code);
+					WsAcceptCode L = new WsAcceptCode(com.npat.pm.AcceptCode.this,Mobile,Usercode,Personcode, code);
+					L.AsyncExecute();
+				}
+				else
+				{
+					Toast.makeText(getApplicationContext(), "شما به اینترنت دسترسی ندارید", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
+
+	}
+
+	private void smsListener() {
+		SmsRetrieverClient client = SmsRetriever.getClient(this);
+		client.startSmsRetriever();
+	}
+
+
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		registerReceiver(appSMSBroadcastReceiver, intentFilter);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		unregisterReceiver(appSMSBroadcastReceiver);
+	}
 }
