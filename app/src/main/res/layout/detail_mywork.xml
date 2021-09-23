@@ -132,6 +132,36 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@string/InsertDateOrder"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:layout_weight="10"
+                    android:drawablePadding="10dp"
+                    app:drawableRightCompat="@drawable/barcode" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtInsertDateOrder"
+                    android:textColor="@color/black"
+                    android:text=""
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:layout_weight="5"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layoutDirection="rtl"
+                tools:ignore="UselessParent"
+                android:background="@drawable/rounded_textview_currency1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="@string/Subject"
                     android:textColor="@color/black"
                     android:paddingStart="10dp"
@@ -279,7 +309,8 @@
                 android:layout_marginEnd="20dp"
                 android:layoutDirection="rtl"
                 tools:ignore="UselessParent"
-                android:background="@drawable/rounded_textview_currency1">
+                android:background="@drawable/rounded_textview_currency1"
+                android:visibility="gone">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -339,6 +370,68 @@
                 android:layout_marginEnd="20dp"
                 android:layoutDirection="rtl"
                 tools:ignore="UselessParent"
+                android:id="@+id/LinearHamkarName"
+                android:background="@drawable/rounded_textview_currency1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/HamkarName"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:drawablePadding="10dp"
+                    app:drawableRightCompat="@drawable/hamkar"
+                    android:layout_weight="10"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtHamkarName"
+                    android:text="@string/ReportDesc"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:layout_weight="5"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layoutDirection="rtl"
+                tools:ignore="UselessParent"
+                android:id="@+id/LinearHamkarSendDate"
+                android:background="@drawable/rounded_textview_currency1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/SendDate"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:drawablePadding="10dp"
+                    app:drawableRightCompat="@drawable/barcode"
+                    android:layout_weight="10"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtHamkarSendDate"
+                    android:text="@string/ReportDate"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:layout_weight="5"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layoutDirection="rtl"
+                tools:ignore="UselessParent"
                 android:id="@+id/LinearStatusDesc"
                 android:background="@drawable/rounded_textview_currency1">
                 <TextView
@@ -357,6 +450,36 @@
                     android:id="@+id/txtStatusDesc"
                     android:text="@string/ReportDesc"
                     android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="top|right"
+                    android:layout_weight="5"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layoutDirection="rtl"
+                tools:ignore="UselessParent"
+                android:id="@+id/LinearReportImage"
+                android:background="@drawable/rounded_textview_currency1"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/ReportImage"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:drawablePadding="10dp"
+                    app:drawableRightCompat="@drawable/tools1"
+                    android:layout_weight="10"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imgReport"
                     android:paddingStart="10dp"
                     android:gravity="center|right"
                     android:layout_weight="5"/>

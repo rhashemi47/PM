@@ -195,12 +195,8 @@ public class MainActivity extends AppCompatActivity {
 //                }
                 Intent serviceIntent = new Intent(getApplicationContext(),ServiceGetUpdate.class);
                 try {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        this.startForegroundService(serviceIntent);
-                    }else {
-                        // Crashlytics.log("crash for first time, trying another.");
+
                         this.startService(serviceIntent);
-                    }
                 }catch ( Exception e1){
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         this.startForegroundService(serviceIntent);

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -47,6 +48,15 @@ public class ReportDuty extends AppCompatActivity {
     String Personcode;
     String WorkCode;
     ImageView imgExit;
+    TextView txtInsertDateOrder;
+    TextView txtHamkarSendDate;
+    LinearLayout LinearStatusDesc;
+    LinearLayout LinearReportImage;
+    LinearLayout LinearHamkarName;
+    LinearLayout LinearHamkarSendDate;
+    ImageView imgReport;
+    TextView txtStatusDesc;
+    TextView txtHamkarName;
     @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +73,16 @@ public class ReportDuty extends AppCompatActivity {
         txtStatus=(TextView) findViewById(R.id.txtStatus);
         txtInsertUser=(TextView) findViewById(R.id.txtInsertUser);
         imgWork=(ImageView) findViewById(R.id.imgWork);
+        LinearStatusDesc=(LinearLayout) findViewById(R.id.LinearStatusDesc);
+        LinearReportImage=(LinearLayout) findViewById(R.id.LinearReportImage);
+        LinearHamkarName=(LinearLayout) findViewById(R.id.LinearHamkarName);
+        LinearHamkarSendDate=(LinearLayout) findViewById(R.id.LinearHamkarSendDate);
         imgExit = (ImageView) findViewById(R.id.imgExit);
+        imgReport = (ImageView) findViewById(R.id.imgReport);
+        txtInsertDateOrder=(TextView) findViewById(R.id.txtInsertDateOrder);
+        txtStatusDesc=(TextView) findViewById(R.id.txtStatusDesc);
+        txtHamkarSendDate=(TextView) findViewById(R.id.txtHamkarSendDate);
+        txtHamkarName=(TextView) findViewById(R.id.txtHamkarName);
 
 
         try
@@ -136,6 +155,69 @@ public class ReportDuty extends AppCompatActivity {
                 if(StrBmp.compareTo("ERROR") != 0) {
                     Bitmap bmp = ImageConvertor.Base64ToBitmap(StrBmp);
                     imgWork.setImageBitmap(bmp);
+                }
+                if(cursors.getString(cursors.getColumnIndex("StatusDesc"))!= null)
+                {
+                    if(cursors.getString(cursors.getColumnIndex("StatusDesc")).compareTo("0") != 0) {
+                        String s =cursors.getString(cursors.getColumnIndex("StatusDesc"));
+                        LinearStatusDesc.setVisibility(View.VISIBLE);
+                        txtStatusDesc.setText(cursors.getString(cursors.getColumnIndex("StatusDesc")));
+                    }
+                    else
+                    {
+                        LinearStatusDesc.setVisibility(View.GONE);
+                    }
+                }
+                else
+                {
+                    LinearStatusDesc.setVisibility(View.GONE);
+                }
+                if(cursors.getString(cursors.getColumnIndex("StatusInsertUser"))!= null)
+                {
+                    if(cursors.getString(cursors.getColumnIndex("StatusInsertUser")).compareTo("0") != 0) {
+                        LinearHamkarName.setVisibility(View.VISIBLE);
+                        txtHamkarName.setText(cursors.getString(cursors.getColumnIndex("StatusInsertUser")));
+                    }
+                    else
+                    {
+                        LinearHamkarName.setVisibility(View.GONE);
+                    }
+                }
+                else
+                {
+                    LinearHamkarName.setVisibility(View.GONE);
+                }
+                if(cursors.getString(cursors.getColumnIndex("StatusInsertDate"))!= null)
+                {
+                    if(cursors.getString(cursors.getColumnIndex("StatusInsertDate")).compareTo("0") != 0) {
+                        LinearHamkarSendDate.setVisibility(View.VISIBLE);
+                        txtHamkarSendDate.setText(cursors.getString(cursors.getColumnIndex("StatusInsertDate")));
+                    }
+                    else
+                    {
+                        LinearHamkarSendDate.setVisibility(View.GONE);
+                    }
+                }
+                else
+                {
+                    LinearHamkarSendDate.setVisibility(View.GONE);
+                }
+                if(cursors.getString(cursors.getColumnIndex("PicReport"))!= null)
+                {
+                    String StrBmpReport = cursors.getString(cursors.getColumnIndex("PicReport"));
+                    if(StrBmpReport.compareTo("ERROR") != 0 && StrBmpReport.length()>10) {
+                        Bitmap bmp = ImageConvertor.Base64ToBitmap(StrBmpReport);
+                        imgReport.setImageBitmap(bmp);
+                        LinearReportImage.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        LinearReportImage.setVisibility(View.GONE);
+                    }
+                }
+                else
+                {
+                    LinearReportImage.setVisibility(View.GONE);
                 }
             }
         }

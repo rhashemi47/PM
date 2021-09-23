@@ -202,7 +202,12 @@ public class WsMyWorkList {
 						",Status" +
 						",Status2" +
 						",InsertUser" +
+						",StatusDesc" +
+						",StatusInsertUser" +
+						",InsertDate" +
+						",StatusInsertDate" +
 						",Pic" +
+						",PicReport" +
 						") VALUES('"
 						+ value[0] +
 						"','" + value[1] +
@@ -214,6 +219,11 @@ public class WsMyWorkList {
 						"','" + value[7] +
 						"','" + value[8] +
 						"','" + value[9] +
+						"','" + value[10] +
+						"','" + value[11] +
+						"','" + value[12] +
+						"','" + value[13] +
+						"','" + value[14] +
 						"')";
 				db.execSQL(query);
 			}

@@ -238,7 +238,11 @@ public class SyncWsGetMyWorkStatusReport {
 							",Description" +
 							",InsertUser" +
 							",StatusDesc" +
+							",StatusInsertUser" +
+							",InsertDate" +
+							",StatusInsertDate" +
 							",Pic" +
+							",PicReport" +
 							") VALUES('"
 								  + value[0] +
 							"','" + value[1] +
@@ -250,6 +254,10 @@ public class SyncWsGetMyWorkStatusReport {
 							"','" + value[7] +
 							"','" + value[8] +
 							"','" + value[9] +
+							"','" + value[10] +
+							"','" + value[11] +
+							"','" + value[12] +
+							"','" + value[13] +
 							"')";
 						db.execSQL(query);
 			}

@@ -56,5 +56,10 @@
     <string name="ReportAct">گزارش کار</string>
     <string name="Send">ثبت</string>
     <string name="default_notification_channel_id">PM</string>
+    <string name="ReportImage">تصویر گزارش</string>
+    <string name="InsertDateOrder">تاریخ درخواست</string>
+    <string name="HamkarName">نام همکار</string>
+    <string name="SendDate">تاریخ ارجاع</string>
+    <string name="ReportDate">تاریخ گزارش</string>
 
 </resources>

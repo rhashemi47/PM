@@ -173,7 +173,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 					cursors.close();
 				}
 			}
-			if (PublicVariable.DATABASE_VERSION != 5) {
+			if (PublicVariable.DATABASE_VERSION != 8) {
 
 				//***************************android_metadata*********************
 				if (!doesTableExist(db, "android_metadata")) {
@@ -246,13 +246,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 							"\"InsertUser\"  TEXT,\n" +
 							"\"InsertDate\"  TEXT,\n" +
 							"\"StatusDesc\"  TEXT,\n" +
-							"\"Pic\"  TEXT\n" +
+							"\"Pic\"  TEXT,\n" +
+							"\"StatusInsertUser\"  TEXT,\n" +
+							"\"StatusInsertDate\"  TEXT,\n" +
+							"\"PicReport\"  TEXT\n" +
 							")");
 				}
 				else
 				{
 					if(!existsColumnInTable(db,"MyWork","StatusDesc")) {
 						db.execSQL( "alter table MyWork add column StatusDesc" ) ;
+					}
+					if(!existsColumnInTable(db,"MyWork","StatusInsertUser")) {
+					db.execSQL( "alter table MyWork add column StatusInsertUser" ) ;
+					}
+					if(!existsColumnInTable(db,"MyWork","StatusInsertDate")) {
+					db.execSQL( "alter table MyWork add column StatusInsertDate" ) ;
+					}
+					if(!existsColumnInTable(db,"MyWork","PicReport")) {
+					db.execSQL( "alter table MyWork add column PicReport" ) ;
 					}
 				}
 				//****************************MyWorkStatusReport*******************************************
@@ -268,13 +280,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 							"\"Description\"  TEXT,\n" +
 							"\"InsertUser\"  TEXT,\n" +
 							"\"StatusDesc\"  TEXT,\n" +
-							"\"Pic\"  TEXT\n" +
+							"\"Pic\"  TEXT,\n" +
+							"\"StatusInsertUser\"  TEXT,\n" +
+							"\"StatusInsertDate\"  TEXT,\n" +
+							"\"PicReport\"  TEXT\n" +
 							")");
 				}
 				else
 				{
 					if(!existsColumnInTable(db,"MyWorkStatusReport","StatusDesc")) {
 						db.execSQL( "alter table MyWorkStatusReport add column StatusDesc" ) ;
+					}
+					if(!existsColumnInTable(db,"MyWorkStatusReport","StatusInsertUser")) {
+						db.execSQL( "alter table MyWorkStatusReport add column StatusInsertUser" ) ;
+					}
+					if(!existsColumnInTable(db,"MyWorkStatusReport","StatusInsertDate")) {
+						db.execSQL( "alter table MyWorkStatusReport add column StatusInsertDate" ) ;
+					}
+					if(!existsColumnInTable(db,"MyWorkStatusReport","PicReport")) {
+						db.execSQL( "alter table MyWorkStatusReport add column PicReport" ) ;
 					}
 				}
 				//****************************OtherWorkStatusReport*******************************************
@@ -291,8 +315,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 							"\"InsertUser\"  TEXT,\n" +
 							"\"InsertUser2\"  TEXT,\n" +
 							"\"InsertDate\"  TEXT,\n" +
-							"\"Pic\"  TEXT\n" +
+							"\"Pic\"  TEXT,\n" +
+							"\"StatusDesc\"  TEXT,\n" +
+							"\"StatusInsertUser\"  TEXT,\n" +
+							"\"StatusInsertDate\"  TEXT,\n" +
+							"\"PicReport\"  TEXT\n" +
 							")");
+				}
+				else
+				{
+					if(!existsColumnInTable(db,"OtherWorkStatusReport","StatusDesc")) {
+						db.execSQL( "alter table OtherWorkStatusReport add column StatusDesc" ) ;
+					}
+					if(!existsColumnInTable(db,"OtherWorkStatusReport","StatusInsertUser")) {
+						db.execSQL( "alter table OtherWorkStatusReport add column StatusInsertUser" ) ;
+					}
+					if(!existsColumnInTable(db,"OtherWorkStatusReport","StatusInsertDate")) {
+						db.execSQL( "alter table OtherWorkStatusReport add column StatusInsertDate" ) ;
+					}
+					if(!existsColumnInTable(db,"OtherWorkStatusReport","PicReport")) {
+						db.execSQL( "alter table OtherWorkStatusReport add column PicReport" ) ;
+					}
 				}
 				//****************************Rade*******************************************
 				if (!doesTableExist(db, "Rade")) {
@@ -355,9 +398,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 							")");
 				}
 				//*******************************************************************************
-				PublicVariable.DATABASE_VERSION = 5;
-				db.execSQL("Update dbVersionPM set version = '5'");
-				db.setVersion(5);
+				PublicVariable.DATABASE_VERSION = 8;
+				db.execSQL("Update dbVersionPM set version = '8'");
+				db.setVersion(8);
 			}
 	}
 	@Override

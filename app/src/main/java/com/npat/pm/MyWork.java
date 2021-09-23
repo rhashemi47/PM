@@ -30,11 +30,17 @@ public class MyWork extends AppCompatActivity {
     TextView txtStatus;
     TextView txtInsertUser;
     TextView txtStatusDesc;
+    TextView txtInsertDateOrder;
+    TextView txtHamkarName;
+    TextView txtHamkarSendDate;
     ImageView imgWork;
     Button btnFinish;
     Button btnAssignment;
     Button btnImpossible;
     LinearLayout LinearStatusDesc;
+    LinearLayout LinearReportImage;
+    LinearLayout LinearHamkarName;
+    LinearLayout LinearHamkarSendDate;
     DatabaseHelper dbh;
     SQLiteDatabase db;
     String Mobile;
@@ -43,6 +49,7 @@ public class MyWork extends AppCompatActivity {
     String WorkCode;
     String Status="";
     ImageView imgExit;
+    ImageView imgReport;
     @SuppressLint("Range")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +64,21 @@ public class MyWork extends AppCompatActivity {
          txtDescription= (TextView) findViewById(R.id.txtDescription);
          txtRequestType=(TextView) findViewById(R.id.txtRequestType);
          txtStatus=(TextView) findViewById(R.id.txtStatus);
+        txtHamkarName=(TextView) findViewById(R.id.txtHamkarName);
         txtInsertUser=(TextView) findViewById(R.id.txtInsertUser);
+        txtInsertDateOrder=(TextView) findViewById(R.id.txtInsertDateOrder);
         txtStatusDesc=(TextView) findViewById(R.id.txtStatusDesc);
+        txtHamkarSendDate=(TextView) findViewById(R.id.txtHamkarSendDate);
         btnFinish=(Button) findViewById(R.id.btnFinish);
         btnAssignment=(Button) findViewById(R.id.btnAssignment);
         btnImpossible=(Button) findViewById(R.id.btnImpossible);
         imgWork=(ImageView) findViewById(R.id.imgWork);
         LinearStatusDesc=(LinearLayout) findViewById(R.id.LinearStatusDesc);
+        LinearReportImage=(LinearLayout) findViewById(R.id.LinearReportImage);
+        LinearHamkarName=(LinearLayout) findViewById(R.id.LinearHamkarName);
+        LinearHamkarSendDate=(LinearLayout) findViewById(R.id.LinearHamkarSendDate);
         imgExit = (ImageView) findViewById(R.id.imgExit);
+        imgReport = (ImageView) findViewById(R.id.imgReport);
 
 
         try
@@ -152,6 +166,7 @@ public class MyWork extends AppCompatActivity {
                 }
                 txtStatus.setText(cursors.getString(cursors.getColumnIndex("Status")));
                 txtInsertUser.setText(cursors.getString(cursors.getColumnIndex("InsertUser")));
+                txtInsertDateOrder.setText(cursors.getString(cursors.getColumnIndex("InsertDate")));
                 String StrBmp = cursors.getString(cursors.getColumnIndex("Pic"));
                 if(StrBmp.compareTo("ERROR") != 0 && StrBmp.length()>10) {
                     Bitmap bmp = ImageConvertor.Base64ToBitmap(StrBmp);
@@ -160,13 +175,65 @@ public class MyWork extends AppCompatActivity {
                 if(cursors.getString(cursors.getColumnIndex("StatusDesc"))!= null)
                 {
                     if(cursors.getString(cursors.getColumnIndex("StatusDesc")).compareTo("0") != 0) {
+                        String s =cursors.getString(cursors.getColumnIndex("StatusDesc"));
                         LinearStatusDesc.setVisibility(View.VISIBLE);
                         txtStatusDesc.setText(cursors.getString(cursors.getColumnIndex("StatusDesc")));
+                    }
+                    else
+                    {
+                        LinearStatusDesc.setVisibility(View.GONE);
                     }
                 }
                 else
                 {
                     LinearStatusDesc.setVisibility(View.GONE);
+                }
+                if(cursors.getString(cursors.getColumnIndex("StatusInsertUser"))!= null)
+                {
+                    if(cursors.getString(cursors.getColumnIndex("StatusInsertUser")).compareTo("0") != 0) {
+                        LinearHamkarName.setVisibility(View.VISIBLE);
+                        txtHamkarName.setText(cursors.getString(cursors.getColumnIndex("StatusInsertUser")));
+                    }
+                    else
+                    {
+                        LinearHamkarName.setVisibility(View.GONE);
+                    }
+                }
+                else
+                {
+                    LinearHamkarName.setVisibility(View.GONE);
+                }
+                if(cursors.getString(cursors.getColumnIndex("StatusInsertDate"))!= null)
+                {
+                    if(cursors.getString(cursors.getColumnIndex("StatusInsertDate")).compareTo("0") != 0) {
+                        LinearHamkarSendDate.setVisibility(View.VISIBLE);
+                        txtHamkarSendDate.setText(cursors.getString(cursors.getColumnIndex("StatusInsertDate")));
+                    }
+                    else
+                    {
+                        LinearHamkarSendDate.setVisibility(View.GONE);
+                    }
+                }
+                else
+                {
+                    LinearHamkarSendDate.setVisibility(View.GONE);
+                }
+                if(cursors.getString(cursors.getColumnIndex("PicReport"))!= null)
+                {
+                    String StrBmpReport = cursors.getString(cursors.getColumnIndex("PicReport"));
+                    if(StrBmpReport.compareTo("ERROR") != 0 && StrBmpReport.length()>10) {
+                        Bitmap bmp = ImageConvertor.Base64ToBitmap(StrBmpReport);
+                        imgReport.setImageBitmap(bmp);
+                        LinearReportImage.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        LinearReportImage.setVisibility(View.GONE);
+                    }
+                }
+                else
+                {
+                    LinearReportImage.setVisibility(View.GONE);
                 }
             }
         }
