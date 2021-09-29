@@ -27,6 +27,7 @@ public class MyRequest extends AppCompatActivity {
     TextView txtDescription;
     TextView txtRequestType;
     TextView txtStatus;
+    TextView txtInsertDateOrder;
     ImageView imgWork;
     ImageView imgExit;
 
@@ -50,6 +51,7 @@ public class MyRequest extends AppCompatActivity {
          txtDescription= (TextView) findViewById(R.id.txtDescription);
          txtRequestType=(TextView) findViewById(R.id.txtRequestType);
          txtStatus=(TextView) findViewById(R.id.txtStatus);
+        txtInsertDateOrder=(TextView) findViewById(R.id.txtInsertDateOrder);
          imgWork=(ImageView) findViewById(R.id.imgWork);
         imgExit = (ImageView) findViewById(R.id.imgExit);
 
@@ -113,6 +115,7 @@ public class MyRequest extends AppCompatActivity {
                 cursors.moveToNext();
 
                 txtCode.setText(cursors.getString(cursors.getColumnIndex("Code")));
+                txtInsertDateOrder.setText(cursors.getString(cursors.getColumnIndex("InsertDate")));
                 txtSubject.setText(cursors.getString(cursors.getColumnIndex("Subject")));
                 WorkType.setText(cursors.getString(cursors.getColumnIndex("WorkType")));
                 Location.setText(cursors.getString(cursors.getColumnIndex("Location")));

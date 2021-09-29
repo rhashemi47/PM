@@ -208,6 +208,7 @@ public class GetWsGetMyWorkRequest {
 						",Rade" +
 						",Description" +
 						",Status" +
+						",InsertDate" +
 						",Pic" +
 						") VALUES('"
 						+ value[0] +
@@ -218,6 +219,7 @@ public class GetWsGetMyWorkRequest {
 						"','" + value[5] +
 						"','" + value[6] +
 						"','" + value[7] +
+						"','" + value[8] +
 						"')";
 					db.execSQL(query);
 				}

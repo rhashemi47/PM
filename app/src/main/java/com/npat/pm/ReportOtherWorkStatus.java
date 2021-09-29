@@ -139,9 +139,10 @@ public class ReportOtherWorkStatus extends AppCompatActivity {
                 Location.setText(cursors.getString(cursors.getColumnIndex("Location")));
                 txtRade.setText(cursors.getString(cursors.getColumnIndex("Rade")));
                 txtDescription.setText(cursors.getString(cursors.getColumnIndex("Description")));
-                txtStatus.setText(cursors.getString(cursors.getColumnIndex("Status")));
                 txtInsertUser.setText(cursors.getString(cursors.getColumnIndex("InsertUser")));
+                txtInsertDateOrder.setText(cursors.getString(cursors.getColumnIndex("InsertDate")));
                 txtHamkarName.setText(cursors.getString(cursors.getColumnIndex("InsertUser2")));
+                txtStatus.setText(cursors.getString(cursors.getColumnIndex("Status")) + " " + cursors.getString(cursors.getColumnIndex("InsertUser2")));
                 String StrBmp = cursors.getString(cursors.getColumnIndex("Pic"));
                 if(StrBmp.compareTo("ERROR") != 0 && StrBmp.length()>10) {
                     Bitmap bmp = ImageConvertor.Base64ToBitmap(StrBmp);

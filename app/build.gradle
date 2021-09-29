@@ -9,8 +9,8 @@ android {
         applicationId "com.npat.pm"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 7
-        versionName "1.6"
+        versionCode 10
+        versionName "1.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

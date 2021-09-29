@@ -61,5 +61,6 @@
     <string name="HamkarName">نام همکار</string>
     <string name="SendDate">تاریخ ارجاع</string>
     <string name="ReportDate">تاریخ گزارش</string>
+    <string name="version">نسخه</string>
 
 </resources>

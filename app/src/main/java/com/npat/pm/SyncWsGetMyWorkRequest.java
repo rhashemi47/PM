@@ -209,6 +209,7 @@ public class SyncWsGetMyWorkRequest {
 						",Rade" +
 						",Description" +
 						",Status" +
+						",InsertDate" +
 						",Pic" +
 						") VALUES('"
 						+ value[0] +
@@ -219,6 +220,7 @@ public class SyncWsGetMyWorkRequest {
 						"','" + value[5] +
 						"','" + value[6] +
 						"','" + value[7] +
+						"','" + value[8] +
 						"')";
 					db.execSQL(query);
 				}

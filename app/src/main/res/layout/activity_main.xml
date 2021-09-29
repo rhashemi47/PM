@@ -46,7 +46,9 @@
                     android:text="به روز رسانی"
                     android:layout_gravity="center"
                     android:textSize="22sp"
+                    android:id="@+id/txtUpdate"
                     android:layout_marginStart="10dp"
+                    android:layout_marginEnd="50dp"
                     android:layout_weight="1"/>
                 <ImageView
                     android:layout_width="20dp"
@@ -61,10 +63,9 @@
                     android:layout_height="20dp"
                     android:layout_gravity="left|center"
                     android:background="@drawable/logout"
-                    android:id="@+id/imgLogout"
+                    android:id="@+id/imgExit"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:visibility="gone"/>
+                    android:layout_marginEnd="10dp"/>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -90,7 +91,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/logo"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -104,16 +105,15 @@
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="150dp"
             android:gravity="center"
             android:orientation="vertical">
-
             <Button
                 android:id="@+id/btnAcceptWork"
                 android:layout_width="match_parent"
@@ -124,7 +124,6 @@
                 android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/listworks" />
-
             <Button
                 android:id="@+id/btnDuty"
                 android:layout_width="match_parent"
@@ -136,7 +135,6 @@
                 android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/MyListWork" />
-
             <Button
                 android:id="@+id/btnReportDuty"
                 android:layout_width="match_parent"
@@ -148,7 +146,6 @@
                 android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/ReportDuty" />
-
             <Button
                 android:id="@+id/btnRequset"
                 android:layout_width="match_parent"
@@ -160,7 +157,6 @@
                 android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/Request" />
-
             <Button
                 android:id="@+id/btnRequsetList"
                 android:layout_width="match_parent"
@@ -172,7 +168,6 @@
                 android:background="@drawable/rounded_button"
                 android:gravity="center"
                 android:text="@string/RequestList" />
-
             <Button
                 android:id="@+id/btnReportHamkarDuty"
                 android:layout_width="match_parent"

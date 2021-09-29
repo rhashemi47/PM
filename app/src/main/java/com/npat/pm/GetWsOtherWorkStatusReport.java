@@ -204,9 +204,9 @@ public class GetWsOtherWorkStatusReport {
 							",Status" +
 							",Description" +
 							",InsertUser2" +
+							",InsertUser" +
 							",StatusDesc" +
 							",StatusInsertUser" +
-							",InsertUser" +
 							",InsertDate" +
 							",StatusInsertDate" +
 							",Pic" +

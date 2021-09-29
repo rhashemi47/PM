@@ -132,6 +132,36 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@string/InsertDateOrder"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:drawablePadding="10dp"
+                    app:drawableRightCompat="@drawable/subject"
+                    android:layout_weight="10"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtInsertDateOrder"
+                    android:text="@string/InsertDateOrder"
+                    android:textColor="@color/black"
+                    android:paddingStart="10dp"
+                    android:gravity="center|right"
+                    android:layout_weight="5"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layoutDirection="rtl"
+                tools:ignore="UselessParent"
+                android:background="@drawable/rounded_textview_currency1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="@string/WorkType"
                     android:textColor="@color/black"
                     android:paddingStart="10dp"
